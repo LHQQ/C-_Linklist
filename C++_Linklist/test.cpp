@@ -44,7 +44,13 @@ void test()
 	L1.LinkPrint();
 	L1.LinkRemove(10);
 	L1.LinkPrint();
-	L1.LinkRemoveAll(5);
+	L1.LinkInsert(L1.LinkFind(6), 45);
+	L1.LinkInsert(L1.LinkFind(7), 45);
+	L1.LinkInsert(L1.LinkFind(8), 45);
+	L1.LinkInsert(L1.LinkFind(9), 45);
+	L1.LinkInsert(L1.LinkFind(10), 45);
+	L1.LinkPrint();
+	L1.LinkRemoveAll(45);
 	L1.LinkPrint();
 }
 

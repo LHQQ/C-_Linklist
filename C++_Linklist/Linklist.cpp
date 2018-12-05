@@ -99,20 +99,31 @@ Linklist_Node* Linklist::LinkFind(DataType value){
 	return nullptr;
 }
 void Linklist::LinkInsert(Linklist_Node* pos, DataType value){
-	Linklist_Node* pNewNode = new Linklist_Node;
-	if (nullptr == pNewNode){
-		assert(pNewNode);
+	Linklist_Node* cur = p_head;
+	if (nullptr == pos){
+		cout << "没有找到要插入的位置,插入失败" << endl;
 		return;
 	}
-	pNewNode->L_data = value;
-	pNewNode->L_pnext = nullptr;
-	Linklist_Node* cur = p_head;
-	while (cur->L_pnext != pos){
+	while (cur!=nullptr&&cur->L_pnext != pos){
 		cur = cur->L_pnext;
 	}
-	pNewNode->L_pnext = pos;
-	cur->L_pnext = pNewNode;
-	p_head->L_data++;
+	if (nullptr == cur){
+		cout << "没有找到相应的位置，插入失败" << endl;
+		return;
+	}
+	else
+	{
+		Linklist_Node* pNewNode = new Linklist_Node;
+		if (nullptr == pNewNode){
+			assert(pNewNode);
+			return;
+		}
+		pNewNode->L_data = value;
+		pNewNode->L_pnext = nullptr;
+		pNewNode->L_pnext = pos;
+		cur->L_pnext = pNewNode;
+		p_head->L_data++;
+	}
 }
 void Linklist::LinkErase(Linklist_Node* pos){
 	Linklist_Node* cur = p_head;
@@ -141,10 +152,13 @@ void Linklist::LinkRemove(DataType value){
 		delete cur;
 		cur = nullptr;
 	}
-	pre->L_pnext = cur->L_pnext;
-	delete cur;
-	cur = nullptr;
-	p_head->L_data--;
+	else
+	{
+		pre->L_pnext = cur->L_pnext;
+		delete cur;
+		cur = nullptr;
+		p_head->L_data--;
+	}
 }
 void Linklist::LinkRemoveAll(DataType value){
 	Linklist_Node* cur =nullptr;
