@@ -38,6 +38,14 @@ void test()
 	//L1.LinkPopFront();
 	cout << L1.LinkLength() << endl;
 	L1.LinkPrint();
+	L1.LinkInsert(L1.LinkFind(6),45);
+	L1.LinkPrint();
+	L1.LinkErase(L1.LinkFind(6));
+	L1.LinkPrint();
+	L1.LinkRemove(10);
+	L1.LinkPrint();
+	L1.LinkRemoveAll(5);
+	L1.LinkPrint();
 }
 
 int main()

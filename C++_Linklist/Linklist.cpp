@@ -98,18 +98,67 @@ Linklist_Node* Linklist::LinkFind(DataType value){
 	}
 	return nullptr;
 }
-//void Linklist::LinkInsert(Linklist_Node* pos, DataType value){
-//
-//}
-//void Linklist::LinkErase(Linklist_Node* pos){
-//
-//}
-//void Linklist::LinkRemove(DataType value){
-//
-//}
-//void Linklist::LinkRemoveAll(DataType value){
-//
-//}
+void Linklist::LinkInsert(Linklist_Node* pos, DataType value){
+	Linklist_Node* pNewNode = new Linklist_Node;
+	if (nullptr == pNewNode){
+		assert(pNewNode);
+		return;
+	}
+	pNewNode->L_data = value;
+	pNewNode->L_pnext = nullptr;
+	Linklist_Node* cur = p_head;
+	while (cur->L_pnext != pos){
+		cur = cur->L_pnext;
+	}
+	pNewNode->L_pnext = pos;
+	cur->L_pnext = pNewNode;
+	p_head->L_data++;
+}
+void Linklist::LinkErase(Linklist_Node* pos){
+	Linklist_Node* cur = p_head;
+	while (cur->L_pnext != pos){
+		cur = cur->L_pnext;
+	}
+	cur->L_pnext = pos->L_pnext;
+	delete pos;
+	pos = nullptr;
+	p_head->L_data--;
+}
+void Linklist::LinkRemove(DataType value){
+	Linklist_Node* cur = p_head->L_pnext;
+	Linklist_Node* pre = p_head->L_pnext;
+	while (nullptr != cur&&cur->L_data != value){
+		pre = cur;
+		cur = cur->L_pnext;
+	}
+	if (nullptr == cur){
+		cout << "没有找到该元素，删除失败" << endl;
+		return;
+	}
+	if (cur == p_head->L_pnext)
+	{
+		p_head->L_pnext = cur->L_pnext;
+		delete cur;
+		cur = nullptr;
+	}
+	pre->L_pnext = cur->L_pnext;
+	delete cur;
+	cur = nullptr;
+	p_head->L_data--;
+}
+void Linklist::LinkRemoveAll(DataType value){
+	Linklist_Node* cur =nullptr;
+	Linklist_Node* pre = p_head;
+	while (nullptr != (cur = LinkFind(value))){
+		while (pre!=nullptr&&pre->L_pnext != cur){
+			pre = pre->L_pnext;
+		}
+		pre->L_pnext = cur->L_pnext;
+		p_head->L_data--;
+		delete cur;
+		cur = nullptr;
+	}
+}
 
 void Linklist::LinkPrint()
 {

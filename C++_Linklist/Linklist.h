@@ -29,10 +29,10 @@ public:
 	bool LinkIsEmpty();
 	int LinkLength();
 	Linklist_Node* LinkFind(DataType value);
-	//void LinkInsert(Linklist_Node* pos, DataType value);
-	//void LinkErase(Linklist_Node* pos);
-	//void LinkRemove(DataType value);
-	//void LinkRemoveAll(DataType value);
+	void LinkInsert(Linklist_Node* pos, DataType value);
+	void LinkErase(Linklist_Node* pos);
+	void LinkRemove(DataType value);
+	void LinkRemoveAll(DataType value);
 	void LinkPrint();
 private:
 	Linklist_Node* p_head;
