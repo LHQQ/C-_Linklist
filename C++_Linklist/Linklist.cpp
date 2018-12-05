@@ -53,8 +53,12 @@ void Linklist::LinkPushFront(DataType value){
 		return;
 	}
 	pNewNode->L_data = value;
-	pNewNode->L_pnext = p_head->L_pnext;
-	p_head = pNewNode;
+	pNewNode->L_pnext = nullptr;
+	Linklist_Node* cur = p_head->L_pnext;
+	if (nullptr != cur){
+		pNewNode->L_pnext = cur;
+		p_head->L_pnext = pNewNode;
+	}
 	p_head->L_data++;
 }
 
