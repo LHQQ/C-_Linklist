@@ -40,6 +40,11 @@ void Linklist::LinkPushBack(DataType value){
 void Linklist::LinkPopBack(){
 	Linklist_Node* cur = p_head;
 	Linklist_Node*pre = p_head;
+	if (nullptr == cur->L_pnext)
+	{
+		cout << "Á´±íÎª¿Õ,É¾³ýÊ§°Ü" << endl;
+		return;
+	}
 	while (nullptr != cur->L_pnext)
 	{
 		pre = cur;
@@ -70,6 +75,7 @@ void Linklist::LinkPopFront(){
 	Linklist_Node* cur = p_head->L_pnext;
 	if (nullptr == cur){
 		cout << "Á´±íÎª¿Õ£¬É¾³ýÊ§°Ü" << endl;
+		return;
 	}
 	p_head->L_pnext = cur->L_pnext;
 	p_head->L_data--;

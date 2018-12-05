@@ -26,8 +26,16 @@ void test()
 	cout << L1.LinkLength() << endl;
 	L1.LinkPrint();
 	cout << "头删两个元素" << endl;
-	L1.LinkPopFront();
-	L1.LinkPopFront();
+	//L1.LinkPopFront();
+	//L1.LinkPopFront();
+	//L1.LinkPopFront();
+	//L1.LinkPopFront();	
+	//L1.LinkPopFront();
+	//L1.LinkPopFront();	
+	//L1.LinkPopFront();
+	//L1.LinkPopFront();
+	//L1.LinkPopFront();
+	//L1.LinkPopFront();
 	cout << L1.LinkLength() << endl;
 	L1.LinkPrint();
 }
